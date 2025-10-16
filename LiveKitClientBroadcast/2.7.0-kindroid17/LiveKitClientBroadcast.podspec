@@ -23,11 +23,12 @@ Pod::Spec.new do |spec|
   spec.static_framework = false
 
   spec.prepare_command = <<-CMD
-    cp -f Sources/LKObjCHelpers/include/LKObjCHelpers.h Sources/LKObjCHelpers/LKObjCHelpers.h
+    mv Sources/LKObjCHelpers/include/LKObjCHelpers.h Sources/LKObjCHelpers/LKObjCHelpers.h
+    rm -rf Sources/LKObjCHelpers/include
   CMD
 
   spec.source_files = "Sources/**/*"
-  spec.public_header_files = "Sources/LKObjCHelpers/**/*.h"
+  spec.public_header_files = "Sources/LKObjCHelpers/LKObjCHelpers.h"
   spec.header_mappings_dir = "Sources/LKObjCHelpers"
   spec.resource_bundles = { "PrivacyBroadcast" => ["Sources/LiveKit/PrivacyInfo.xcprivacy"] }
 
@@ -40,8 +41,8 @@ Pod::Spec.new do |spec|
   spec.pod_target_xcconfig = {
     "APPLICATION_EXTENSION_API_ONLY" => "YES",
     "OTHER_SWIFT_FLAGS" => swift_flags.join(" "),
-    "HEADER_SEARCH_PATHS" => '$(inherited) "${PODS_TARGET_SRCROOT}/Sources/LKObjCHelpers/include"',
-    "OTHER_CFLAGS" => '$(inherited) -I"${PODS_TARGET_SRCROOT}/Sources/LKObjCHelpers/include"',
+    "HEADER_SEARCH_PATHS" => '$(inherited) "${PODS_TARGET_SRCROOT}/Sources/LKObjCHelpers"',
+    "OTHER_CFLAGS" => '$(inherited) -I"${PODS_TARGET_SRCROOT}/Sources/LKObjCHelpers"',
     "PRODUCT_NAME" => "LiveKitClientBroadcast",
     "PRODUCT_MODULE_NAME" => "LiveKitClientBroadcast"
   }
