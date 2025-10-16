@@ -37,6 +37,7 @@ Pod::Spec.new do |spec|
     "APPLICATION_EXTENSION_API_ONLY" => "YES",
     "OTHER_SWIFT_FLAGS" => swift_flags.join(" "),
     "HEADER_SEARCH_PATHS" => '$(inherited) "${PODS_TARGET_SRCROOT}/Sources/LKObjCHelpers/include"',
+    "OTHER_CFLAGS" => '$(inherited) -I"${PODS_TARGET_SRCROOT}/Sources/LKObjCHelpers/include"',
     "PRODUCT_NAME" => "LiveKitClientBroadcast",
     "PRODUCT_MODULE_NAME" => "LiveKitClientBroadcast"
   }
