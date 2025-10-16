@@ -23,8 +23,8 @@ Pod::Spec.new do |spec|
   spec.static_framework = false
 
   spec.source_files = "Sources/**/*"
-  spec.public_header_files = "Sources/**/*.h"
-  spec.header_mappings_dir = "Sources"
+  spec.public_header_files = "Sources/LKObjCHelpers/include/**/*.h"
+  spec.header_mappings_dir = "Sources/LKObjCHelpers/include"
   spec.resource_bundles = { "PrivacyBroadcast" => ["Sources/LiveKit/PrivacyInfo.xcprivacy"] }
 
   spec.dependency "LiveKitWebRTC", "= 137.7151.03"
@@ -36,6 +36,7 @@ Pod::Spec.new do |spec|
   spec.pod_target_xcconfig = {
     "APPLICATION_EXTENSION_API_ONLY" => "YES",
     "OTHER_SWIFT_FLAGS" => swift_flags.join(" "),
+    "HEADER_SEARCH_PATHS" => '$(inherited) "${PODS_TARGET_SRCROOT}/Sources/LKObjCHelpers/include"',
     "PRODUCT_NAME" => "LiveKitClientBroadcast",
     "PRODUCT_MODULE_NAME" => "LiveKitClientBroadcast"
   }
