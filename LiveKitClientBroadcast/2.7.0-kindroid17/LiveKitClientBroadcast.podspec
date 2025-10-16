@@ -23,6 +23,8 @@ Pod::Spec.new do |spec|
   spec.static_framework = false
 
   spec.source_files = "Sources/**/*"
+  spec.public_header_files = "Sources/**/*.h"
+  spec.header_mappings_dir = "Sources"
   spec.resource_bundles = { "PrivacyBroadcast" => ["Sources/LiveKit/PrivacyInfo.xcprivacy"] }
 
   spec.dependency "LiveKitWebRTC", "= 137.7151.03"
